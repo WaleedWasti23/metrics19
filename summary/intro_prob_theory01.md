@@ -31,4 +31,8 @@
 4.	Estimation and Empirical CDF
 5.  [Vadim Marmer's Notes, Lecture 1](http://faculty.arts.ubc.ca/vmarmer/econ327/index.html)
 
+## Stata Example
+
+1. [Stata Examples: Empirical CDF and PDF](stata/lecture01-prob01-ecdf-pdf.do)
+
 
