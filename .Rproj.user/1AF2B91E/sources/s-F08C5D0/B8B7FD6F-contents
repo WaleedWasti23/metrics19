@@ -1,4 +1,4 @@
-# Introduction to Econometrics and Probability Theory
+# Topic 1. Basics of Probability Theory
 
 ## Detailed Topics to be covered
 
