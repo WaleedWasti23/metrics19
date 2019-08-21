@@ -4,7 +4,7 @@
 |         |          |                                                                                                                                   |            | 
 | 1       | 8/19/19  | Syllabus and Introduction to Probability Theory and Distribution [details](summary/intro_prob_theory01.md)                        |            | 
 |         |          |                                                                                                                                   |            | 
-| 2       | 8/21/19  | Introduction to Probability Theory and Distribution  [details](summary/intro_prob_theory01.md)                                    | PS 1       | 
+| 2       | 8/21/19  | Introduction to Probability Theory and Distribution  [details](summary/intro_prob_theory01.md)                                    | [PS 1](ps/ps1.pdf)       | 
 |         |          |                                                                                                                                   |            | 
 | 3       | 8/26/19  | Introduction to Probability Theory and Distribution  [details](summary/intro_prob_theory01.md)                                    |            | 
 |         |          |                                                                                                                                   |            | 
