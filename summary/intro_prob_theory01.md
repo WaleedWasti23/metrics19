@@ -33,6 +33,6 @@
 
 ## Stata Example
 
-1. [Stata Examples: Empirical CDF and PDF](stata/lecture01-prob01-ecdf-pdf.do)
+1. [Stata Examples: Empirical CDF and PDF](../stata/lecture01-prob01-ecdf-pdf.do)
 
 
