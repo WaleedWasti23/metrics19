@@ -14,11 +14,11 @@
 |         |          |                                                                                                                                                |                    | 
 | 6       | 9/4/19   | **Topic 2.** Mathematical Expectation: Parts (II) [details](summary/intro_prob_theory02_expectation.md)                                        | [PS 2](ps/ps2.pdf) | 
 |         |          |                                                                                                                                                |                    | 
-| 7       | 9/9/19   | **Topic 2.** Mathematical Expectation and Alternative Ways to Characterize Distribution [details](summary/intro_prob_theory03_alternatives.md) |                    | 
+| 7       | 9/9/19   | **Topic 2.** Mathematical Expectation and Alternative Ways to Characterize Distribution [details](summary/intro_prob_theory03_alternatives.md) | [PS 3](ps/ps3.pdf) | 
 |         |          |                                                                                                                                                |                    | 
 | 8       | 9/11/19  | **Topic 3.** Quantile Function [details](summary/intro_prob_theory04_quantiles.md)                                                             |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 9       | 9/16/19  | **Topic 3.** Quantile Function [details](summary/intro_prob_theory04_quantiles.md)                                                             |                    | 
+| 9       | 9/16/19  | **Topic 3.** Quantile Function [details](summary/intro_prob_theory04_quantiles.md)                                                             | [PS 3](ps/ps3.pdf) | 
 |         |          |                                                                                                                                                |                    | 
 | 10      | 9/18/19  | **Topic 3.** Quantile Function [details](summary/intro_prob_theory04_quantiles.md)                                                             |                    | 
 |         |          |                                                                                                                                                |                    | 
