@@ -24,7 +24,7 @@
 
 2.	Continuous Distributions 
 
-    1.. CB, Chapter 3.3-3.5; pages 219-220
+    1. CB, Chapter 3.3-3.5; pages 219-220
     
     2. Bruce Hansen’s notes, Chapter 5.1-5.7 and Exercises on MGF and CF (including Stata code) https://www.ssc.wisc.edu/~bhansen/econometrics/Econometrics.pdf
 
