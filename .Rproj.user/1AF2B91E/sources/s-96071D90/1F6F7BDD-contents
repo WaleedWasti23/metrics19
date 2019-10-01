@@ -1,0 +1,819 @@
+---
+title: "Quantile Function and Its Properties: Part (I)"
+author: "Le Wang"
+header-includes:
+  - \usepackage{tikz}
+date: "`r Sys.Date()`"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Math Preliminaries
+
+1. Infimum and its properties regarding subsets
+2. Limit point and infimum
+3. Order Properties of a function
+4. Right continuity of a function
+
+
+---
+
+**mathematical preliminaries:**
+
+1. **infimum ($\inf$):** Greatest lower bound
+
+\bigskip
+**Example** 
+
+  1. $\inf\{1,2,3,\dots\} = 1$ (in the set)
+  2. $\inf\{x \in \mathbb{R}\mid 0<x<1\}=0$ (not in the set)
+  
+
+**Proposition:** Suppose that $A, B$ are subsets of $\mathbb{R}$ such that $A \subset B$. If $\inf A, \inf B$ both exist, then 
+
+$$
+\inf A \geq \inf B
+$$
+
+---
+
+**mathematical preliminaries:** 
+
+2. A point $a$ is a *limit* (or accumulation or cluster) point of a set $A$ if every $\epsilon-$ neighborhood $V_\epsilon(a)$ of $a$ intersects the set $A$ in some point other than $a$.
+
+\pause
+\bigskip
+
+3. If $A \subset \mathbb{R}$, $a=\inf\{A\}, a\not\in A$, then the infimum $a$ is a limit point of $A$. 
+\bigskip
+\pause
+
+4. **Theorem** A point $a$ is a limit point of a set $A$ if and only if $a = \lim{x_i}$ for some sequence $x_i$ contained in $A$ such that $x_i \neq a$ for all $i \in \mathbb{N}$. 
+
+\bigskip
+\pause
+
+---
+
+**mathematical preliminaries:** The above theorems and definitions together imply that for an **infimum**
+
+\bigskip
+
+There exists a sequence $\{x_i\}^\infty_{i=1} \in A$ with $\underset{i\rightarrow \infty}{\lim}x_i=x^0$ and $x_i > x_0$ for all $i$. 
+
+---
+
+**mathematical preliminaries:**
+
+1. **Order Properties of Functions:** Suppose that $f,g:A\rightarrow\mathbb{R}$ and $x^0$ is a limit point of $A$. If
+$$
+f(x) \geq g(x) \quad \forall x \in A
+$$
+
+and $\lim_{x\rightarrow x^0} f(x)$ and $\lim_{x\rightarrow x^0} g(x)$ exist, then 
+
+$$
+\lim_{x\rightarrow x^0} f(x) \geq \lim_{x\rightarrow x^0} g(x)
+$$
+
+2. **Right Continuity** If $f: A \rightarrow \mathbb{R}$ is right continuous at a point $x^0$ if
+
+$$
+\lim_{x \rightarrow (x^0)^+} f(x) = f(x^0)
+$$
+
+---
+
+**mathematical preliminaries:**
+
+**Order properties** and **Right continuity** imply that if $f:A \rightarrow \mathbb{R}$ is right continuous at a point $x^0$ that is an limit point of $A$, and $f(x) \geq \tau = g(x) \quad \forall x \in A$, then
+
+$$
+\begin{aligned}
+f(x^0) = \lim_{x\rightarrow x^0} f(x) &\geq \tau \quad (=\lim_{x\rightarrow x^0} \tau) \\
+f(x^0) &\geq  \tau
+\end{aligned} 
+$$
+
+
+## Alternative Approaches to Characterize a Distribution
+
+We are now looking for the **inverse function** of the CDF. And obviously, that is an equivalent approach to characterize the distribution as well. 
+
+
+## Alternative Approaches to Characterize a Distribution
+
+**Quantile** (rank variable)
+
+\bigskip
+
+From your undergrad econometrics, $\tau^{th}$ quantile is often loosely defined as the value that is greater than $\tau$ percent of the population values.
+
+\bigskip
+
+For example, median ($50^{th}$ percentile).
+
+
+## Quantile and CDF
+
+**Quantile** is closely related to **CDF**
+
+$$F[Q_{X}(.50)]=\Pr[X\leq Q_{X}(.5)]=.5$$
+
+## Quantile and PDF
+
+From the perspective of PDF, the $\tau^{th}$ quantile splits the area under the density into two parts: one with area $\tau$ below the $\tau^{th}$ quantile and the other with area $1-\tau$ above it. 
+
+![](figures/quantilepdf.png){ width=80% }
+
+
+
+## Quantile (Graphial Example)
+
+![](figures/cdfplot.png){ width=80% }
+
+## Quantile and Mean
+
+Note that the following result holds if $X$ is strictly continuously distributed
+
+$$
+\mathbb{E}[X] = \int^1_0 Q_X(\tau)d\tau 
+$$
+
+I put it here, but this property can only be shown later. I will leave it as a **homework question**
+
+
+---
+# Quantile and Mean
+Note that Skorohod Representation implies that if $X$ is distributed with CDF $F_X(x)$, then there is $U \sim \mathcal{U}(0,1)$ such that $X=F^{-1}_X(U)=m(U)$ holds almost surely. Then, by definition of expecation of a function of a random variable
+$$
+\begin{aligned}
+\mathbb{E}[X] & = \mathbb{E}[F^{-1}_X(U)] \\
+              & \int^1_0 F^{-1}_X(u) f(u) du \\
+              & \int^1_0 F^{-1}_X(u) 1 du \\
+              & \int^1_0 Q_X(u)du \\
+\end{aligned}
+$$
+---
+
+## Quantile and CDF
+
+**Case 1:** $F(\cdot)$ is continuous and strictly monotonic ($X$ is continuously distributed). 
+
+\bigskip
+
+We again know that there exists an inverse function, $Q_{X}(\tau)\equiv F^{-1}(\tau)$,such that
+
+$$
+F^{-1}(\tau) = F^{-1}(F(x))=x
+$$
+
+
+
+
+## Quantile 
+
+**Case 2**: $F(\cdot)$ is neither continuous nor strictly monotonic (i.e., $X$ is NOT continuously distributed)
+
+
+
+## Quantile (Graphial Example)
+
+Any values between 0 and 2 can be $50^{th}$ percentile
+
+![](figures/cdfplot2.png){ width=80% }
+
+
+## Quantile Function
+
+Since not all distribution functions are strictly increasing, not all distribution functions have proper inverses. The following **generalized inverse function** allows for retaining many of the proerties that are useful for various probabilistic arguments
+
+\bigskip
+
+
+**Definition:** Let $F(x)$ be a distribution function (a nondecreasing and right continuous function). The quantile function or the generalized inverse function of $F$ is defined as 
+$$
+F^{-1}(\tau) \equiv \inf\{x: F(x)\geq \tau, 0<\tau<1\}
+$$
+
+## Quantile Function
+
+This definition also allows us to study the properties of quantile function, and modern estimation of quantile function that can be readily extended to quantile regression.
+
+
+## Quantile and CDF
+
+![](figures/cdfplot3.png)
+
+
+## Numerical Example of Quantile Function
+
+**Example**:
+
+$\{0,1,2\}$
+
+\bigskip
+
+$$
+\Pr[X=0] = \frac{1}{3}, \Pr[X=1] = \frac{1}{2}, \Pr[X=2] = \frac{1}{6}
+$$
+
+
+## Numerical Example of Quantile Function
+
+Consider an example of discrete random variable with 
+$$
+\Pr[X=0] = \frac{1}{3}, \Pr[X=1] = \frac{1}{2}, \Pr[X=2] = \frac{1}{6}
+$$
+
+**median**, i.e., $\tau = \frac{1}{2}$, then 
+
+$$
+F^{-1}(.5) = \inf \{x: F(x)\geq .5\}
+$$
+
+## Numerical Example of Quantile Function
+
+$$
+F^{-1}(.5) = \inf \{x: F(x)\geq .5\}
+$$
+
+For all the $x$, 
+
+$$
+\begin{aligned}
+F[0] & = \Pr[X \leq 0] = \frac{1}{3} \\
+F[1] & = \Pr[X \leq 1] =  \Pr[X=0]+ \Pr[X=1] = \frac{1}{3} + \frac{1}{2} = \frac{5}{6} \\
+F[2] & =\Pr[X \leq 2] = 1
+\end{aligned}
+$$
+
+\pause
+
+$$
+\begin{aligned}
+F^{-1}(.5) & = \inf \{x: F(x)\geq .5\} \\
+           & = \inf \{1, 2\} \\
+           & = 1
+\end{aligned}
+$$
+
+
+---
+
+![](figures/generalized_inverse.png)
+
+---
+
+This graph highlights two difficulties when thinking about the generalized inverse function in general
+
+1. When there is a **flat** region in the CDF
+
+\bigskip
+2. When there is a **jump** (flat region in the quantile function)
+
+## Properties of Quantile Function
+
+1. $F^{-1}(\tau)$ is nondecreasing and left continuous. (the **opposite** of the CDF) 
+2. $F^{-1}(F(x))\leq x$
+3. $F(F^{-1}(\tau))\geq \tau$ (for $F^{-1}(\tau) <\infty$ implicitly assumed below)
+4. $F^{-1}(\tau)\leq x \iff \tau \leq F(x)$ (a result of 2. and 3.)
+
+
+## Properties of Quantile Function
+
+1. $F^{-1}(\tau)$ is nondecreasing and left continuous. (the **opposite** of the CDF) 
+
+![](figures/generalized_inverse.png){ width=70%}
+
+
+## Properties of Quantile Function
+
+**Nondecreasing** means that
+
+$$
+\tau < F(x) \text{ only implies } F^{-1}(\tau) \leq x 
+$$
+
+## Properties of Quantile Function
+
+Property: $F^{-1}(\tau)$ is nondecreasing
+
+\bigskip
+
+**Proof:** Suppose that $\tau_1 <\tau_2$. Then we would like to show that $x_1 = F^{-1}(\tau_1) \leq x_2 = F^{-1}(\tau_2)$. 
+
+\pause
+\bigskip
+
+\pause
+By definition, $x_1 = \inf \{x: F(x)\geq \tau_1\}$ and $x_2 = \inf  \{x: F(x)\geq \tau_2\}$. 
+
+\bigskip
+\pause
+We know that $F(x)\ge \tau_2 \implies F(x)\ge \tau_1$. In other words, $\{x: F(x)\geq \tau_2\} \subset \{x: F(x)\geq \tau_1\}$. 
+
+\bigskip
+\pause
+Thus, it follows that $x_1 = \inf \{x: F(x)\geq \tau_1\} \leq x_2 = \inf \{x: F(x)\geq \tau_2\}$. 
+
+
+## Numerical Example of Quantile Function
+
+Consider our previous example,
+$$
+\begin{aligned}
+F[0] & = \frac{1}{3} \\
+F[1] & = \frac{5}{6} \\
+F[2] & = 1
+\end{aligned}
+$$
+
+$\tau=\frac{1}{2} < F(1)=\frac{5}{6}$, but $F^{-1}(.5) = F^{-1}(F(x))=1$. 
+
+
+## Properties of Quantile Function
+
+\begin{center}
+
+{\Large Further Properties of Quantile Functions regarding Continuity}
+
+\end{center}
+
+![](figures/quantile_cont.png){ width=90% } 
+
+
+ 
+
+## Properties of Quantile Function
+
+**Continuity at a point** and Properties of Quantile Function
+
+4. If $F$ is continuous at $x=F^{-1}(\tau)$, then $F(F^{-1}(\tau))=\tau$. 
+5. If $F^{-1}(\tau)$ is continuous at $\tau = F(x)$, then $F^{-1}(F(x))=x$. 
+
+
+
+## Properties of Quantile Function
+
+**Continuity everywhere** and Properties of Quantile Function
+
+6. The following statements are equivalent:
+    a. $F(F^{-1}(\tau))=\tau, \forall \tau \in (0,1)$
+    b. $F$ is continuous
+    c. $F^{-1}(\tau)$ is strictly increasing.
+    
+![](figures/quantile_cont.png){ width=90% } 
+
+## Properties of Quantile Function
+
+**Continuity** and Properties of Quantile Function
+
+7. $F$ is continuous and strictly increasing $\iff$ $F^{-1}$ is continuous and strictly increasing.
+
+## Properties of Quantile Function
+
+\begin{center}
+
+{\Large More Difficult Properties of Quantile Functions}
+
+\end{center}
+
+These properties are about the **inverse** of the **inverse**. Intuition does not work quite straightforward for the **discrete** or **mixed** distribution for which you have mass points. 
+
+1. $F^{-1}(F(x)) > = < x$?
+2. $F(F^{-1}(\tau)) > = < \tau$?
+
+## Properties of Quantile Function
+
+Let's use a graph to illustrae our intuition and guide our proof.
+
+![](figures/generalized_inverse.png)
+
+
+## Properties of Quantile Function (More Difficult)
+
+1. $F^{-1}(\tau)$ is nondecreasing and left continuous. (the **opposite** of the CDF) 
+2. $F^{-1}(F(x))\leq x$
+3. $F(F^{-1}(\tau))\geq \tau$
+4. $F^{-1}(\tau)\leq x \iff \tau \leq F(x)$ (a result of 2. and 3.)
+
+
+## Properties of Quantile Function
+
+2. $F^{-1}(F(x))\leq x$
+3. $F(F^{-1}(\tau))\geq \tau$
+4. $F^{-1}(\tau)\leq x \iff \tau \leq F(x)$ (a result of 2. and 3.)
+
+
+
+
+## Properties of Quantile Function
+
+**Property:** $$F^{-1}(F(x^0))\leq x^0$$
+
+
+
+\bigskip
+
+**Proof** $F^{-1}(F(x^0)) = \inf \{x: F(x) \geq F(x^0)\}$. And because $x^0 \in \{x: F(x) \geq F(x^0)\}$, $F^{-1}(F(x)) \leq x^0$. 
+
+
+## Properties of Quantile Function
+
+**Property:** 
+$$
+F(F^{-1}(\tau))\geq \tau
+$$
+
+
+---
+
+![](figures/generalized_inverse02.png)
+
+
+---
+
+**mathematical preliminaries:**
+
+1. **infimum ($\inf$):** Greatest lower bound
+
+\bigskip
+**Example** 
+
+  1. $\inf\{1,2,3,\dots\} = 1$ (in the set)
+  2. $\inf\{x \in \mathbb{R}\mid 0<x<1\}=0$ (not in the set)
+
+---
+
+**mathematical preliminaries:** 
+
+2. A point $a$ is a *limit* (or accumulation or cluster) point of a set $A$ if every $\epsilon-$ neighborhood $V_\epsilon(a)$ of $a$ intersects the set $A$ in some point other than $a$.
+
+\pause
+\bigskip
+
+3. If $A \subset \mathbb{R}$, $a=\inf\{A\}, a\not\in A$, then the infimum $a$ is a limit point of $A$. 
+\bigskip
+\pause
+
+4. **Theorem** A point $a$ is a limit point of a set $A$ if and only if $a = \lim{x_i}$ for some sequence $x_i$ contained in $A$ such that $x_i \neq a$ for all $i \in \mathbb{N}$. 
+
+\bigskip
+\pause
+
+---
+
+**mathematical preliminaries:** The above theorems and definitions together imply that for an **infimum**
+
+\bigskip
+
+There exists a sequence $\{x_i\}^\infty_{i=1} \in A$ with $\underset{i\rightarrow \infty}{\lim}x_i=x^0$ and $x_i > x_0$ for all $i$. 
+
+---
+
+**mathematical preliminaries:**
+
+1. **Order Properties of Functions:** Suppose that $f,g:A\rightarrow\mathbb{R}$ and $x^0$ is a limit point of $A$. If
+$$
+f(x) \geq g(x) \quad \forall x \in A
+$$
+
+and $\lim_{x\rightarrow x^0} f(x)$ and $\lim_{x\rightarrow x^0} g(x)$ exist, then 
+
+$$
+\lim_{x\rightarrow x^0} f(x) \geq \lim_{x\rightarrow x^0} g(x)
+$$
+
+2. **Right Continuity** If $f: A \rightarrow \mathbb{R}$ is right continuous at a point $x^0$ if
+
+$$
+\lim_{x \rightarrow (x^0)^+} f(x) = f(x^0)
+$$
+
+---
+
+**mathematical preliminaries:**
+
+**Order properties** and **Right continuity** imply that if $f:A \rightarrow \mathbb{R}$ is right continuous at a point $x^0$ that is an limit point of $A$, and $f(x) \geq \tau = g(x) \quad \forall x \in A$, then
+
+$$
+\begin{aligned}
+f(x^0) = \lim_{x\rightarrow x^0} f(x) &\geq \tau \quad (=\lim_{x\rightarrow x^0} \tau) \\
+f(x^0) &\geq  \tau
+\end{aligned} 
+$$
+
+
+
+## Properties of Quantile Function
+
+**Property:** 
+$$
+F(F^{-1}(\tau))\geq \tau
+$$
+
+\bigskip
+\pause
+**Proof** Suppose that $x^0=F^{-1}(\tau)=\inf \{x: F(x) \geq \tau \}$. Define Set $A=\{x: F(x) \geq \tau \}$
+
+\bigskip
+
+**Case 1** $x^0 \in \{x: F(x) \geq \tau \}$. Then $F(F^{-1}(\tau))=F(x_0) \geq \tau$.
+
+\bigskip
+\pause
+**Case 2** $x^0 \not\in \{x: F(x) \geq \tau \}$. There exists a sequence $\{x_i\}^\infty_{i=1} \in A$ with $\underset{i\rightarrow \infty}{\lim}x_i=x^0$ and $x_i > x_0$ for all $i$. 
+
+\bigskip
+
+Right continuity of $F$ implies $F(x^0)=\underset{i\rightarrow \infty}{\lim}F(x_i) \geq \tau$. 
+
+
+## Properties of Quantile Function
+
+2. $F^{-1}(F(x))\leq x$
+3. $F(F^{-1}(\tau))\geq \tau$
+4. $F^{-1}(\tau)\leq x \iff \tau \leq F(x)$ (a result of Properties 2. and 3.)
+
+**Proof** 
+
+$$F^{-1}(\tau)\leq x \implies \tau \leq F(x)$$
+
+Since $F$ is non-decreasing, we know that $F(F^{-1}(\tau)) \leq    F(x)$. Due to Property 3. above, $\tau \leq F(F^{-1}(\tau)) \leq F(x)$. 
+
+\bigskip
+
+The second part is simiarily shown using Property 2. 
+
+
+## Properties of Quantile Function
+
+**Proposition** Let $X$ be a real-valued random variable with distribution function $F(x)=\Pr[X\leq x]$. Then for any $\tau \in (0,1)$, 
+
+1. $\Pr[X\leq F^{-1}(\tau)] \geq \tau$ and $\Pr[X<F^{-1}(\tau)] \leq \tau$
+2. $\Pr[X> F^{-1}(\tau)] \leq 1-\tau$ and $\Pr[X\geq F^{-1}(\tau)] \geq 1-\tau$. 
+
+## Properties of Quantile Function
+
+\begin{center}
+
+{\Large Quantile Functions and Uniform Distribution}
+
+\end{center}
+
+
+## Quantile Functions
+
+**Quantile Function and Uniform Distribution**
+
+  1. **Inverse Transformation Method** (for Simulation or Reproduction Property)
+  2. **Probability Integral Transform:** $Y=F(X)$
+  3. **Skorohod Representation**
+
+## Quantile and Uniform Distribution
+
+There is an interesting connection between quantiles and the uniform ($0,1$) distribution, $\mathcal{U}(0,1)$.
+
+
+
+## Properties of Quantile Function
+
+A direct result of Properties 2-4
+
+**Reproduction Property** Let $X$ be a real-valued random variable with distribution function $F$, and let $U$ be uniformly distributed between zero and one. Then,
+
+$$
+F^{-1}(U) \sim F_X 
+$$
+
+
+## Properties of Quantile Function
+
+$$
+F^{-1}(U) \sim F_X 
+$$
+\bigskip
+
+**Proof** We can show that 
+$$
+\begin{aligned}
+\Pr[F^{-1}(U) \leq x] & = \Pr[U \leq F(x)] \\
+                      & = F_U(F(x)) \\
+                      & = F(x)
+\end{aligned}
+$$
+
+Recall that Property 4. 
+
+$$
+F^{-1}(\tau)\leq x \iff \tau \leq F(x)
+$$
+
+
+
+
+## Quantiles and Uniform Distribution
+
+$$
+F^{-1}(U) \sim F_X 
+$$
+
+
+The reproduction property enables the **inversion method** in Monte-Carlo simulation to generate random numbers of an arbitrary distribution from uniformly distributed random numbers. The method will work whenever the generalized inverse can be computed explicitly.
+
+
+---
+
+**Numerical Example:** Exponential Variable, $X\sim Expo(\frac{1}{2})$ for $X >0$
+
+$$
+\begin{aligned}
+\text{PDF:} & \quad f(x) = \frac{1}{2}\exp\{-\frac{1}{2}x\}  \\
+\text{CDF:} & \quad F(x) = 1-\exp\{-\frac{1}{2}x\} = u  \\
+\end{aligned}
+$$
+\pause 
+
+This implies that 
+$$
+F^{-1}(u) = -2\cdot \log(1-u)
+$$
+
+
+**Example:** $u=0.843$, then $Expo(2)=-2\cdot \log(1-.843) = 3.703$
+
+
+## Quantiles and Uniform Distribution
+
+The reverse is true as well. 
+
+\bigskip
+
+**Theorem** Let $X$ be a continuously distributed with a **strictly increasing** CDF, $F_X(x)$. Suppose that $Y=F_X(X)$. Then, 
+
+$$Y\sim \mathcal{U}(0,1)$$
+
+\pause
+
+**Note:** This is not necessarily true if $X$ has mass point (no jump in the CDF). For example, $X$ is a Bernoulli distribution with $p$, then 
+
+$$
+\begin{aligned}
+F(0) & = 1-p \quad \text{with} \quad p^* = 1-p \\
+F(1) & = 1 \quad \qquad \text{with} \quad p^* = p \\
+\end{aligned}
+$$
+
+---
+
+Note that $F(\cdot)$ is known as the *probability integral transform* (PIT). The result presented here is itself a direct consequence of the transformation theorem that we have shown earlier. Remember that $F(\cdot)$ in this case is a monotonically increasing function, and we obtain its density by using the following formula
+
+$$
+f_Y(y) = f_X(x)\frac{1}{\mid dF_X(x)/dx\mid } = 1
+$$
+
+## Quantiles and Uniform Distribution
+
+$$Y=F_X(x) \sim \mathcal{U}(0,1)$$
+
+**Sketch Proof** 
+$$
+\begin{aligned}
+\Pr[Y \leq y] & = \Pr[F_X(X) \leq y] \text{    (by definition)}\\
+              \pause & = \Pr[F^{-1}(F(X)) \leq F^{-1}(y)]  \text{    (non-decreasing)}\\
+              \pause & =\Pr[X \leq F^{-1}(y)] \text{    (property of the inverse function)} \\
+              \pause & = F(F^{-1}(y))  \text{    (definition)}\\
+              \pause & = y  \text{    (property of the inverse function)}
+\end{aligned}
+$$
+
+**Note:** Many of the proofs in this course are NOT complete because the assumptions are not necessarily stated and the logic clearly explained. You need to complete these proofs on your own by filling in these details. 
+
+
+## More General Case (Skip)
+
+\bigskip
+
+We actually can allow the CDF of $X$ to be **continuous** but non-decreasing. In other words, we will see a flat region in the CDF, but **no jumps**. The proof in Casella's book is a bit difficult to follow. So, I present a slightly different version here. 
+
+\bigskip
+
+**Proof.** The key is again to show that for the general case, the following continues to hold
+$$
+\Pr[F_X(X) \leq y] =\Pr[X \leq F^{-1}(y)] 
+$$
+
+## More General Case (Skip)
+
+Remember that 
+$$
+\Pr[F_X(X) \leq y] =\Pr[X \in \{x: F_X(x) \leq y\}] 
+$$
+Lets define $Q_X(y) = F^{-1}(y)$ the smallest value satisfying $F(x) = y$. Note that since the CDF is continuous and there exists no jump, we will not have $F(Q_X(y)) > y$. 
+
+$$
+\begin{aligned}
+\Pr[X \in \{x: F_X(x) \leq y\}] & = \Pr[\{x: X \leq Q_X(y)\}\cup \{x: F_X(x) = y\}] \\
+                                \pause & = \Pr[\{X \leq Q_X(y)\}] + \Pr[\{x: F_X(x) = y\}] \\
+                                \pause & = \Pr[X \leq Q_X(y)] \\
+                                \pause & = F(Q_X(y)) \\
+                                \pause & = y \text{(note the definition of $Q_X(y)$)}
+\end{aligned}
+$$
+
+---
+
+I recently used this result in one of my proofs to characterize the **rank-rank** model in the mobility literature. 
+
+\bigskip
+
+**see may paper**
+
+
+## Quantile and Uniform Distribution
+
+**Skorokhod Representation** 
+
+\bigskip
+
+If $X$ is distributed with CDF $F_X(x)$, then there is $U \sim \mathcal{U}(0,1)$ such that $X=F^{-1}_X(U)=m(U)$ holds almost surely.
+
+\pause
+\bigskip
+
+**Note:** The proof is rather trivial for the continuous variable where you can just define $U=F(X)$, which exists. 
+
+\bigskip
+
+**Note:** You will use this in your homework. 
+
+
+
+## Differentiation of Quantile Function
+
+**Theorem** Let $F(x)$ be a distribution function. If $F$ has a positive continuous $f(x)$ density $f$ in a neighborhood of $F^{-1}(\tau_0)$ where $0<\tau_0<1$, then the derivative $\frac{d}{d\tau} F^{-1}(\tau)$ exists at $\tau = \tau_0$ and
+
+$$
+\frac{d}{d\tau} F^{-1}(\tau)|_{\tau_0} = \frac{1}{f(F^{-1}(\tau_0))} 
+$$
+
+## Quantiles of A Function of Random Variable
+
+**Theorem** Let $X$ be a real-valued random variable with distribution $F_X(x)=\Pr[X\leq x]$. If $g(X)$ is a **nondecreasing, left continuous** function, then
+
+$$
+F^{-1}_{g(X)}(\tau) = g(F^{-1}_X(\tau))
+$$
+
+
+\bigskip
+
+**Proof:** See, e.g., Reza Hosseini **Quantiles Equivariance** for an example of the proof and a counterexample that the quantile function is equivariant under increasing transformations (claimed in Koenker's classic book on Quantile Regression).
+
+
+---
+
+This is particularly useful and carries to the quantile regression framework. Suppose that $Y = \ln W$ (log wages) and $y = F_Y^{-1}(\tau)$, then
+
+$$
+F^{-1}_W(\tau) = \exp(y)
+$$
+
+**Note:** You cannot use this for expectation.
+
+A variant of the result can be generalized and applied to many situations (e.g., censored quantile regression, binary quantile regression, maximum score model). 
+
+---
+see [more example here](https://ocw.mit.edu/courses/economics/14-385-nonlinear-econometric-analysis-fall-2007/lecture-notes/lecture09.pdf)
+--- 
+
+
+
+## Quantile and Symmetric Distribution
+
+**Theorem** Let $X$ be distributed with a PDF $f_X$, which is symmetric around $\mathbf{\mu}$:
+
+$$
+f_X(\mu+u) = f_X(\mu-u)
+$$
+
+for any $u\in \mathbb{R}$. Then the following properties hold
+
+1. $\mathbb{E}[X]=\mu$
+2. $Q_X(0.5)=\mu$
+3. $Q_X(1-\tau)-\mu= \mu - Q_X(\tau)$
+
+---
+# UBC BIE Notes 10 Quantiles
+--- 
+
+
+
+
+
+

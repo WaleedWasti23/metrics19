@@ -1,0 +1,140 @@
+---
+title: "Stata Tutorial"
+author: "Le Wang"
+date: "3/27/2017"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE,echo=FALSE, message=FALSE}
+backtick <- "`"
+require(knitr)
+statapath <- "/Applications/Stata/StataMP.app/Contents/MacOS/StataMP"
+opts_chunk$set(engine="stata", engine.path=statapath, comment="",size='footnotesize', collectcode = TRUE)
+
+knit_hooks$set(collectcode = function(before, options, envir) {
+  if (!before) {
+    profile <- file("profile.do", open="at")
+    writeLines(options$code, profile)
+    close(profile)
+  }
+})
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+## Our in-class code
+
+First, let's download a dataset called `auto` from Stata's website or from the system with this dataset. 
+```{r message=FALSE, collectcode=TRUE}
+webuse auto,clear
+sysuse auto,clear
+```
+
+Let's first look at what type variables exist in this dataset. 
+```{r}
+de
+```
+
+We can also calculate the marginal distribution by using the command `tab()` which is short for `tabulate()`. 
+
+```{r}
+tab foreign
+```
+
+We can also calculate **empirical** CDF for the values in our dataset. For example, 
+
+```{r}
+  sort price
+  g cdf = .
+  g count = (price <= price[1])
+  sum count
+  
+  # Show what was calculated and returned by the command summarize() 
+  return list
+  sum count
+  di r(mean)
+  replace cdf = r(mean) if _n == 1
+```
+
+Note that `_n` is an internal id in Stata, which refers to the position of the observation. In this case, it means that you will replace the CDF with the one you just calculated for the first observation. You can also repeat this process for the second, third observations and so on.
+
+```{r}
+  drop count
+  g count = (price <= price[2])
+  sum count
+  replace cdf = r(mean) if _n == 2
+```
+
+Of course, this process become tedious, especially when the sample size becomes large. You have to manually re-type four lines of code for every observation. Fortunately, we can simply use a loop to take care of repeatitive tasks for us. The following code repeat the process for the first through the last (74) observations
+
+```{r}
+forvalues i = 1/74{
+  
+  cap drop count
+  g count = (price <= price[`i'])
+  sum count
+  replace cdf = r(mean) if _n == `i'
+  
+}
+```
+
+The pre-fix command `cap()` is short for `capture()`. This command will ignore whatever error message Stata has for running the command `drop count` and continue with the rest of the code. 
+
+We can also obtain various quantiles using the command `sum()`, which is short for `summarize()`, with the option `detail`. 
+
+```{r}
+sum price, detail
+```
+
+You can also type `return list` to see what has been calculated and returned by the command `sum()`. 
+
+There are two general classes of commands in Stata. One is r-class commands, and the other e-class commands. The latter refers to estimation commands which must return coefficients and variance-covariance matrix for these coefficients. The way to see what is calculated, estimated, and returned by an estimation command is to type `ereturn list`. Let's look at one example.
+
+```{r}
+reg price weight
+ereturn list
+```
+
+As you can see, all the coefficients are stored in the matrix called `e(b)` and the variance-covariance matrix `e(V)`. There is also an interesting internal variable returned by every estimation command: `e(sample)`. This variable records which observation is indeed used in our estimations. If you are running another model and want to make sure that you are using the same dataset from the previous estimation command, you can simply type 
+
+```{r}
+reg price length if e(sample)
+```
+
+Note that whenever you run a new model or estiamtion command, the variable `e(sample)` also changes with the actual sample used for the command that is most recently run.
+
+In my previous code, selecting a subsample is achieved by specifying a condition after `if`. The condition after `if` is often stated in the form of `x == 1`. There is an important distinction between `=` and `==`. The former assigns a value, while the latter evaluates the condition. 
+
+For example, if we would like to calculate conditional mean of price given a Audi Fox car, we can type the following
+
+```{r}
+sum price if make == "Audi Fox"
+```
+
+You can imagine that Stata does this in two steps:
+
+1. Look for observations satisfy the condition `make = "Audi Fox"`
+2. Calculate summary statistics for this subset of observations. 
+
+We can also calculate conditional mean for every possible combinations of variables, say, 
+
+$$
+\mathbb{E}[\text{price}|\text{foreign,dummy}]
+$$
+
+We can just type the following code:
+
+```{r}
+  g dummy = ( runiform() <=.5 )
+  bys foreign dummy: sum price
+```
+
+```{r cleanup, engine='R', echo=FALSE}
+unlink("profile.do")
+```
