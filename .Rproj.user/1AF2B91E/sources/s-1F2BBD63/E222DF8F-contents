@@ -29,3 +29,11 @@
     2. Bruce Hansen’s notes, Chapter 5.1-5.7 and Exercises on MGF and CF (including Stata code) https://www.ssc.wisc.edu/~bhansen/econometrics/Econometrics.pdf
 
 3.	Additional results on the distributions of sample mean and variance (CB, chapter 5.3.1; Hansen Chapter 5.11) and T-statistic (CB chapter 5.3.2.)
+
+## Programming Examples
+
+1. [Manipulation of Normals](../stata/Stata_example_special_dist01.do)
+
+2. [Chi-square dist and sample variance](../stata/Stata_example_special_dist02.do)
+
+3. [Various Parametric Distributions](../stata/Stata_example_special_dist03.do)

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569965249625.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3246844700",
+    "id" : "336D7EDF",
+    "lastKnownWriteTime" : 1570037191,
+    "last_content_update" : 1570037191957,
+    "path" : "~/Dropbox/02 teaching/stat/03lectures/03-Univariate-Statistics/01_slides/examples/discrete_variable_factor_examples.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "140,0",
+        "scrollLine" : "133"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

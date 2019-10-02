@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1569964135319.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "930341101",
+    "id" : "8886CE43",
+    "lastKnownWriteTime" : 1569721323,
+    "last_content_update" : 1569721323,
+    "path" : "~/Dropbox/02 teaching/stat/03lectures/03-Univariate-Statistics/01_slides/examples/discrete_variable_basics.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
