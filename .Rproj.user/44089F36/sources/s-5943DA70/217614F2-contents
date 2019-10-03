@@ -22,9 +22,9 @@
 |         |          |                                                                                                                                                |                    | 
 | 10      | 9/18/19  | **Topic 3.** Quantile Function [details](summary/intro_prob_theory04_quantiles.md)                                                             |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 11      | 9/23/19  | **Topic 4.** Monte Carlo Simulation [details](summary/intro_prob_theory05_MC.md)                                                    |                    | 
+| 11      | 9/23/19  | **Topic 4.** Monte Carlo Simulation [details](summary/intro_prob_theory05_MC-parametric.md)                                                    | [PS 4](ps/ps4.pdf) | 
 |         |          |                                                                                                                                                |                    | 
-| 12      | 9/25/19  | **Topic 5.** Parametric Distributions and Random Numbers [details](summary/intro_prob_theory05_MC-parametric.md)                               |                    | 
+| 12      | 9/25/19  | **Topic 5.** Parametric Distributions and Random Numbers [details](summary/intro_prob_theory05_MC-parametric.md)                               | [PS 4](ps/ps4.pdf) | 
 |         |          |                                                                                                                                                |                    | 
 | 13      | 9/30/19  | **Topic 5.** Parametric Distributions and Random Numbers [details](summary/intro_prob_theory05_MC-parametric.md)                               |                    | 
 |         |          |                                                                                                                                                |                    | 
