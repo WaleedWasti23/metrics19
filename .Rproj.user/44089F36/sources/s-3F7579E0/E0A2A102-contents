@@ -28,9 +28,9 @@
 |         |          |                                                                                                                                                |                    | 
 | 13      | 9/30/19  | **Topic 5.** Parametric Distributions and Random Numbers [details](summary/intro_prob_theory05_MC-parametric.md)                               |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 14      | 10/2/19  | **Topic 6.** Joint Distribution  [details](summary/intro_prob_theory06_joint-dist.md)                                                          |                    | 
+| 14      | 10/2/19  | **Topic 6.** Joint Distribution  [details](summary/intro_prob_theory06_joint_dist.md)                                                          |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 15      | 10/7/19  | **Topic 6.** Joint Distribution  [details](summary/intro_prob_theory06_joint-dist.md)                                                          | [PS 5](ps/ps5.pdf) | 
+| 15      | 10/7/19  | **Topic 6.** Joint Distribution  [details](summary/intro_prob_theory06_joint_dist.md)                                                          | [PS 5](ps/ps5.pdf) | 
 |         |          |                                                                                                                                                |                    | 
 | 16      | 10/9/19  | **Topic 7.** Conditional Distribution    [details](summary/intro_prob_theory07_cond_dist.md)                                                   |                    | 
 |         |          |                                                                                                                                                |                    | 
