@@ -54,6 +54,7 @@
 2.	Quantify relationship between two variables 
 
     a.	Independence (CB, chapter 4.2. pages 152-156)
+    
     b.	Covariance and Correlation (CB, chapter 4.5)
 
 3.	**Special Case**: Multivariate Normal (see also Bruce Hansen’s notes Chapter 5.2.). Note that we will use this result in various settings such as derivation of the exact finite sample distribution of OLS estimator.
