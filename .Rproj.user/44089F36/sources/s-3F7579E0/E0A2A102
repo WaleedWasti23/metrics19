@@ -1,24 +1,21 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1570675739820.000,
+    "created" : 1571446129621.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
-    "id" : "7F953535",
-    "lastKnownWriteTime" : 1570675755,
-    "last_content_update" : 1570675755585,
+    "hash" : "4064977348",
+    "id" : "E0A2A102",
+    "lastKnownWriteTime" : 1571446633,
+    "last_content_update" : 1571446633982,
     "path" : "~/Dropbox/02 teaching/EconometricsI/09github/2019f/README.md",
     "project_path" : "README.md",
     "properties" : {
-        "cursorPosition" : "24,99",
-        "scrollLine" : "21"
+        "cursorPosition" : "32,186",
+        "scrollLine" : "23"
     },
-    "read_only" : false,
-    "read_only_alternatives" : [
-    ],
-    "relative_order" : 2,
+    "relative_order" : 4,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "markdown"

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1570734311016.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1005131642",
+    "id" : "41622F52",
+    "lastKnownWriteTime" : 1570306661,
+    "last_content_update" : 1570306661,
+    "path" : "~/Dropbox/02 teaching/stat/05Homework/2019/ps4.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

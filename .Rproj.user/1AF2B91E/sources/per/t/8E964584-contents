@@ -1,0 +1,972 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{animate}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Econ 5023: Statistics for Decision Making}
+\subtitle{Univariate Statistics (III): Continuous Variables}
+\author{Le Wang}
+
+\maketitle
+
+
+\begin{frame}
+\bigskip
+
+\textbf{Question:} 
+
+\vspace{.25in}
+How should we obtain the best forecast for a continuous variabe?
+
+\end{frame}
+
+\begin{frame}[fragile]
+\textbf{Issues:}
+
+\bigskip
+Conceptually we do not know the probability for a particular value. Why?
+
+    \only<2->{
+    
+       A continuous variable can take on an infinite number of values! 
+      
+    }
+    
+\end{frame}
+
+\begin{frame}[fragile]
+Approach 1 (Complete Distribution Approach but approximation): Discretize the continuous variable
+
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}
+  \includegraphics[width=4in, height=3in]{figures/continuous_discrete01.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}
+  \includegraphics[width=4in, height=3in]{figures/continuous_discrete02.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{figure}
+  \includegraphics[width=4in, height=3in]{figures/continuous_discrete03.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{figure}
+  \includegraphics[width=4in, height=3in]{figures/continuous_discrete04.png}
+\end{figure}
+
+\end{frame}
+\begin{frame}[fragile]
+Approach 1 (Complete Distribution Approach but approximation): Discretize the continuous variable
+
+Plot the distribution for a continuous variable: 
+
+\vspace{.15in}
+
+\textbf{Frequency Distribution:} A grouping of quantitative data into mutually exclusive and collectively exhaustive classes showing the number of observations in each class.
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+Nothing but treating a continuous variable as a discrete one!
+
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  library(quantmod)
+  getSymbols('UNRATE',src='FRED')
+  hist(UNRATE)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+You can even refine it further:
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  hist(UNRATE, breaks = seq(1,12,.1), freq = TRUE)
+@
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  library(ggplot2)
+  ggplot(data = UNRATE, aes(x=UNRATE)) +
+    geom_histogram(binwidth = 1)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  library(ggplot2)
+  ggplot(data = UNRATE, aes(x=UNRATE)) +
+    geom_histogram(binwidth = .01)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+You can even refine it further: \textbf{Smoothed Version: Probability Density Function}
+
+<<echo=FALSE, message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+    plot(density(UNRATE, adjust=2), col="darkgreen", lwd=2) 
+@
+
+\end{frame}
+
+\begin{frame}
+
+The probability density function, $f(x)$, provides a \textbf{relative probability} for a particular value.
+
+\bigskip
+
+CDF: $F(x)= \Pr[X \leq x] = \int^{x}_{-\infty} f(t)dt$
+
+\bigskip
+
+PDF (if contionuous at $x$): $f(x) = \frac{d}{dx}F(x)$
+
+\bigskip
+
+\textbf{Remember:} in the case of discrete variables, the PMF can be obtained as the changes in CDF with respect to changes in $X$.
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+<<echo=FALSE>>=
+x<- rnorm(10000)
+@
+
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+plot(ecdf(x)) 
+@
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+plot(density(x)) 
+@
+
+\end{frame}
+
+\begin{frame}{Two Properties of a Probability Density Function}
+
+\begin{enumerate}
+  \item It is non-negative; $f(x) \geq 0$. It can be greater than $1$. 
+  \item It integrates to one.
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+Lets visualize the relationship  between CDF and PDF. on See Theory website at Brown University.
+
+\bigskip
+
+Chapter 3: Probability Distributions (Discrete and Continuous)
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+<<message=FALSE, fig.height=3, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  ggplot(data = UNRATE, aes(x=UNRATE)) +
+    geom_density(adjust = 2) 
+    expand_limits(x=c(0,14))
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+<<eval=FALSE, message=FALSE, fig.height=3, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  ggplot(data = UNRATE, aes(x=UNRATE)) +
+    geom_density(adjust = 2) 
+    expand_limits(x=c(0,14))
+@
+
+1. bw: The smoothing bandwidth to be used. If numeric, the standard deviation of the smoothing kernel.
+
+2. adjust: A multiplicate bandwidth adjustment.
+
+The actual bandwidth is the product of these two values. 
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+<<emessage=FALSE, fig.height=3, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+  ggplot(data = UNRATE, aes(x=UNRATE)) +
+    geom_density(fill = 'steelblue', adjust = 2) + 
+    expand_limits(x=c(0,14)) + 
+    scale_x_continuous(breaks=seq(0, 14, 2))
+@
+
+\end{frame}
+
+
+
+
+\begin{frame}
+
+In the case of continuous variables, it is often easier to work with the CDF, but some of the features will be more visiable when using the PDF after we introduce other concepts. 
+
+\bigskip
+
+CDF provides an way to evaluate all possible values. For all the possible values, $y$, we can calculate the probability of all the values being less than or equal to $y$. 
+
+\end{frame}
+
+
+\begin{frame}{A Degression: Kernel Density Estimation}
+
+How do we \textbf{actually} calculate the probability density function?
+
+\bigskip
+
+\textbf{Kernel Density Estimation}
+
+\bigskip
+
+Basis for many things in the future in machine learning, for example, classification
+
+\end{frame}
+
+\begin{frame}
+
+Recall that the definition of the derivative of a function $g(x)$ is given by 
+$$
+\frac{d}{dx} g(x) = \lim_{h \rightarrow 0} \frac{g(x + h) - g(x)}{h}
+$$
+
+or, equivalently, 
+$$
+\frac{d}{dx} g(x) = \lim_{h \rightarrow 0}  \frac{g(x + h) - g(x-h)}{2h}
+$$
+
+\end{frame}
+
+
+\begin{frame}
+$$
+\frac{d}{dx} g(x) = \lim_{h \rightarrow 0}  \frac{g(x + h) - g(x-h)}{2h}
+$$
+
+PDF is then given by
+
+$$
+f(x) = \frac{d}{dx} F(x) = \lim_{h \rightarrow 0}  \frac{F(x + h) - F(x-h)}{2h}
+$$
+
+\end{frame}
+
+
+\begin{frame}
+$$
+f(x) = \frac{d}{dx} F(x) = \lim_{h \rightarrow 0}  \frac{F(x + h) - F(x-h)}{2h}
+$$
+
+
+\begin{figure}
+  \includegraphics[width=3in, height=2in]{figures/continuous_discrete02.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+$$
+\widehat{f}(x) = \frac{1}{2h} \cdot \frac{1}{N} \#\{ X_1, X_2, \dots, X_N \text{ falling in the interval }[x-h, x + h] \}
+$$
+
+$$
+\widehat{f}(x) = \frac{1}{2h} \cdot \frac{1}{N} \sum \mathbb{I}\left[\{ X_i \text{ falling in the interval }[x-h, x + h] \} \right]
+$$
+
+\bigskip
+
+Which $X_i$ would fall in the interval $[x-h, x + h]$? 
+
+\pause
+
+
+\begin{eqnarray*}
+x - h & \leq X_i \leq x + h \\
+ - h & \leq X_i - x \leq  h \\
+ - 1 & \frac{X_i -x}{h} \leq 1 \\
+\mid \frac{X_i-x}{h} \mid \leq 1
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+
+
+$$
+\widehat{f}(x) = \frac{1}{2h} \cdot \frac{1}{N} \sum \mathbb{I}\left[\{ X_i \text{ falling in the interval }[x-h, x + h] \} \right]
+$$
+
+\bigskip
+
+is equivalent to
+
+\begin{eqnarray*}
+\widehat{f}(x) & = & \frac{1}{Nh} \sum \underbrace{\frac{1}{2} \cdot \mathbb{I}\left[\frac{X_i-x}{h} \mid \leq  1 \right]}_{k(\frac{X_i-x}{h})} \\
+\pause
+\widehat{f}(x) & = & \frac{1}{Nh} \sum k(\frac{X_i-x}{h})
+\end{eqnarray*}
+
+where 
+$$
+k(\frac{X_i-x}{h}) =
+\begin{cases}
+\frac{1}{2} \quad \text{if } \frac{X_i-x}{h} \leq 1 \\
+0 \quad \text{otherwise}
+\end{cases}
+$$
+
+\end{frame}
+
+\begin{frame}
+In practice, $k(v)$ can take many different parametric forms, e.g., standard normal kernel
+
+$$
+k(v) = \frac{1}{\sqrt{2\pi}} \exp\{-\frac{1}{2}v^2\}
+$$
+
+In fact, the function that we just looked at is called \textbf{rectangular kernel}.
+
+\end{frame}
+
+\begin{frame}
+
+Let's look at how to program this in R. 
+
+\end{frame}
+
+\begin{frame}
+
+\begin{enumerate}
+  \item CDF $\rightarrow$ PDF (its derivative)
+  \item CDF $\rightarrow$ Quantile (its inverse function)
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Quantile or Percentile}
+
+\textbf{Quantile:} $\tau$-th Percentile (or Quantile) 
+\vspace{.15in}
+
+$Q_{\tau} = \inf \{ x: F(x) \geq \frac{\tau}{100} \}$
+
+\vspace{.15in}
+\only<2->{
+
+Loosely speaking, the $\tau$-th percentile is rank.
+
+}
+
+\vspace{.15in}
+\only<3->{
+
+For example, $50^{th}$ percentile (median) indicates that fifty percent of the population is smaller than this value. 
+
+}
+\end{frame}
+
+\begin{frame}[fragile]
+
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+x<- rnorm(10000)
+z <- c(0:10)/10
+plot(ecdf(x),ylab = "", yaxt='n')  
+axis(2, at=z, labels=z, col.axis="red", tck=-.01,las = 2)
+abline(h=z, v=c(-4:4), col="gray", lty=5)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\textbf{In Practice: What is your $40^{th}$ percentile in this dataset?}
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+x<-c(6,7,6,3,10,3,2,1,10,7)
+z <- c(0:10)/10
+plot(ecdf(x),c(0:10),ylab = "", yaxt='n')
+axis(2, at=z, labels=z, col.axis="red", tck=-.01,las = 2)
+axis(1, at=c(0:10), labels=c(0:10), tck=-.01,las = 1)
+abline(h=z, v=1:10, col="gray", lty=3)
+abline(v=4,col="red",lty=1)
+abline(h=ecdf(x)(4),col="red",lty=1)
+@
+
+\end{frame}
+
+\begin{frame}{Quantile or Percentile}
+
+\textbf{Quantile:} $\tau$-th Percentile (or Quantile) 
+\vspace{.15in}
+
+$Q_{\tau} = \inf \{ x: F(x) \geq \frac{\tau}{100} \}$
+
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+x<-c(6,7,6,3,10,3,2,1,10,7)
+z <- c(0:10)/10
+plot(ecdf(x),c(0:10),ylab = "", yaxt='n')
+axis(2, at=z, labels=z, col.axis="red", tck=-.01,las = 2)
+axis(1, at=c(0:10), labels=c(0:10), tck=-.01,las = 1)
+abline(h=z, v=1:10, col="gray", lty=3)
+abline(v=4,col="red",lty=1)
+abline(h=ecdf(x)(4),col="red",lty=1)
+@
+
+What are the $x$s with $F(x) \geq .4$? $(3,4,5,6,7,8,9,10)$
+\end{frame}
+
+\begin{frame}[fragile]
+In \texttt{R}, we can use the following command
+
+<<>>=
+x<-c(6,7,6,3,10,3,2,1,10,7)
+median(x)
+quantile(x,.4)
+@
+\end{frame}
+
+\begin{frame}[fragile]
+People have different definitions of quantiles when it is not unique!
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+x<-c(6,7,6,3,10,3,2,1,10,7)
+z <- c(0:10)/10
+plot(ecdf(x),c(0:10),ylab = "", yaxt='n')
+axis(2, at=z, labels=z, col.axis="red", tck=-.01,las = 2)
+axis(1, at=c(0:10), labels=c(0:10), tck=-.01,las = 1)
+abline(h=z, v=1:10, col="gray", lty=3)
+abline(v=7,col="red",lty=1)
+abline(h=ecdf(x)(7),col="red",lty=1)
+@
+
+<<>>=
+quantile(x,.8, type = 1)
+@
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+We can plot the entire quantile function (for each probability)
+
+<<echo=TRUE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+plot(seq(0,1,0.01),quantile(x,probs = seq(0,1,0.01), type=1,na.rm=TRUE))
+@
+
+\end{frame}
+
+
+\begin{frame}
+
+This method is \textbf{\emph{nonparametric}}, because we do not assume anything about the underlying distribution.
+
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+Application in Risk Management: \textbf{Value at Risk (VaR)} for measuring Downside Risk
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+\textbf{Motivation:}
+
+\begin{enumerate}
+\item Stock prices soar and plummet,
+\item Interest rates escalate and drop,
+\item Exchange rats rise and fall
+\item etc..
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\textbf{Questions:}  
+
+\bigskip
+
+\begin{enumerate}
+\item How low the asset or portfolio value could become?
+\item How much loss could be made, tomorrow, next week, next month, next year?
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+I'd like to emphasize that we do not consider how to set up a porfolio, but consider an asset or when you already choose a portfolio. 
+
+\bigskip
+
+In the context of constructing a portfolio, we are less concerned with individual risk and more concerned with the way the assets in the portfolio move together. 
+
+\end{frame}
+
+\begin{frame}
+``Itineary''
+
+\begin{enumerate}
+  \item Defintion of $VaR$
+  \item Worked Example for VaR for daily returns
+  \item VaR for alternative time horizons and rules to scale daily VaR
+  \item Alternative definition of returns
+  \item Cumulative risk profile
+  \item Expected shortfall measures
+  \item Risk comparisons, Interquantile Range, Boxplot
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}
+\textbf{Value at Risk (VaR)}
+
+\bigskip
+
+A statistical measure, against which the chance of a \textbf{worse} scenario happening is small ($5$ or $1$ percent).
+
+\bigskip
+
+In its most general form, the Value at Risk measures the potential loss in value of a risky asset or portfolio over \underline{\textbf{a defined period}} for \underline{\textbf{a given confidence interval}}. 
+
+
+\end{frame}
+
+\begin{frame}
+
+\textbf{Warning:}
+
+\bigskip
+
+Possible loss in value from ``normal market risk'', as opposed to all risk!
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\textbf{Example:} VaR on an asset is \$ $17.8$ million at a one-week, 95\% confidence level.
+
+\bigskip
+
+\only<2->{
+\textbf{Translation:} 
+
+\bigskip
+
+Only a 5\% chance that the value of the asset will drop more than \$ $17.8$ million over any given week.
+
+}
+\end{frame}
+
+
+\begin{frame}
+
+VaR = Amount of Investment $\times$ VaR for Returns \underline{over a certain period}
+
+\begin{enumerate}
+\item Amount of Investment
+\item Confidence Interval (Percentage of Rare Events)
+\item Returns and its distribution over a certain period
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{center}
+\textbf{A Worked Example}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+VaR = Amount of Investment $\times$ VaR for Returns \underline{over a certain period}
+
+\begin{enumerate}
+\item Amount of Investment: \$ $1000$
+\item Confidence Interval (Percentage of Rare Events): $5$ percent
+\item Returns and its distribution over a certain period
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+VaR = $1000$ $\times$ VaR for Returns \underline{over a certain period}
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+<<>>=
+# Set Parameters
+# an investment of value V
+V = 1000
+alpha<-0.05
+@
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+<<message=FALSE, size= 'tiny'>>=
+# Load the package first before we can use those commands
+library("quantmod")
+
+# Download Walmart stock data from Yahoo
+getSymbols('WMT')
+
+# Take a look at the data (first six rows/dates)
+head(WMT)  
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+<<size='tiny'>>=
+# Calculate Daily Return
+# return = log(S[i]/S[i-1])
+
+#ret <- diff(log(WMT$WMT.Adjusted))
+ret <- diff(WMT$WMT.Adjusted)/lag(WMT$WMT.Adjusted)
+head(ret)
+
+ret2 <- dailyReturn(WMT$WMT.Adjusted)
+head(ret2)
+@
+\end{frame}
+
+\begin{frame}[fragile]
+Let's look at the VaR for daily returns
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+z <- c(0:15)/100
+plot(density(ret,na.rm = TRUE))
+abline(v=quantile(ret,0.05, type = 1,na.rm=TRUE),col="red",lty=1)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+
+<<>>=
+quantile(ret,0.05, type = 1,na.rm=TRUE)
+@
+
+<<>>=
+quantile(ret,alpha, type = 1,na.rm=TRUE)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+\begin{eqnarray*}
+VaR & = & \text{Amount of Investment} \times \text{ VaR for Daily Returns } \\
+&  = & 1000 \times \Sexpr{quantile(ret,0.05, type = 1,na.rm=TRUE)} \\
+& = & \Sexpr{1000*quantile(ret,0.05, type = 1,na.rm=TRUE)}
+\end{eqnarray*}
+
+
+\only<2->{
+\textbf{Interpretation:} there is a 5\% chance that we will lose more than \$ \Sexpr{1000*quantile(ret,0.05, type = 1,na.rm=TRUE)} on our \$1000 investment in the next day.
+}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+Our approach is nonparametric in that we do not impose any distributional assumptions in estimating the VaR for returns (\textbf{Historical VaR}).
+
+\bigskip
+
+This is different from traditional VaR analysis (JP Morgan/Reuters Metrics) which relies on the assumption of normal distribution (perhaps more precisely estimated, \textbf{Gaussian VaR}). 
+\end{frame}
+
+\begin{frame}[fragile]
+You can also choose a subset of the data (for example, more recent ones)
+
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+WMT.2011<-subset(ret2,index(ret2) >="2011-01-01" & index(ret2) <="2011-12-31")
+head(WMT.2011)
+tail(WMT.2011)
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+You can also calculate VaR for different time horizone, for example, for weekly returns. The only thing you need to do is to use appropriate commands to calculate the corresponding returns.
+
+For example, 
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+WMT.week<-weeklyReturn(WMT$WMT.Adjusted)
+WMT.month<-monthlyReturn(WMT$WMT.Adjusted)
+
+head(WMT.week)
+@
+
+\end{frame}
+
+\begin{frame}
+In industry, people also use the Square Root of $T$ rule to scale 1-day VaR to a $T-day$ VaR
+
+\bigskip
+
+Assuming that the returns are independent and ientically distributed, we can calculate a $T$-day VaR by multiplying the daily VaR by $\sqrt{T}$. For example, 
+
+\bigskip
+
+our VaR for daily returns is $-17.5321817$, and then $7$day VaR should be $-17.5321817\times \sqrt{7} = -46.38579$
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+You can also calculate VaR for returns using log formula.
+
+$$
+\log(\text{Price}_t) - \log(\text{Price}_{t-1})
+$$
+
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+WMT.log<-dailyReturn(WMT$WMT.Adjusted, type='log')
+head(WMT.log)
+head(ret2)
+@
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\bigskip
+
+Instead of calculate VaR for a particular level, we can also present the entire \emph{cumulative risk profile}
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+
+plot(seq(0,1,0.01),1000*quantile(ret,probs = seq(0,1,0.01), type=1,na.rm=TRUE))
+
+@
+
+
+\end{frame}
+
+
+\begin{frame}
+
+One issue with VaR is that it does not capture the sape of the tail of the distribution. That is VaR does not allow us to answer the question, ``if losses exceed VaR, how bad should we expect that loss to be?''
+
+\bigskip
+
+Another commonly used measure is 
+
+\bigskip
+
+\textbf{Expected Shortfall}: $\mathbb{E}[return|return \leq Q_{\tau}]$ 
+
+\bigskip
+
+\noindent where $Q_{\tau}$ is $\tau^{th}$ percentile.
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\textbf{Question:} Which of the following stocks will have a larger VaR?
+
+<<echo=FALSE>>=
+set.seed(123456)
+Stock1_ret<- rnorm(1000)
+Stock2_ret<- rnorm(1000, mean = 0, sd = 2)
+@
+
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+plot(density(Stock1_ret,na.rm = TRUE), col="red", type="l",lwd=2, lty=5,ylab = "", yaxt='n')
+lines(density(Stock2_ret,na.rm = TRUE), col="blue", type="l",lwd=2,ylab = "", yaxt='n')
+@
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+<<>>=
+quantile(Stock1_ret,0.05, type = 1)
+quantile(Stock2_ret,0.05, type = 1)
+@
+
+\begin{eqnarray*}
+VaR & = & \text{Amount of Investment} \times \text{ VaR for Daily Returns } \\
+&  = & 1000 \times \Sexpr{quantile(quantile(Stock1_ret,0.05, type = 1),0.05, type = 1,na.rm=TRUE)} \\
+& = & \Sexpr{1000*quantile(quantile(Stock1_ret,0.05, type = 1),0.05, type = 1,na.rm=TRUE)}
+\end{eqnarray*}
+
+
+\begin{eqnarray*}
+VaR & = & \text{Amount of Investment} \times \text{ VaR for Daily Returns } \\
+&  = & 1000 \times \Sexpr{quantile(quantile(Stock2_ret,0.05, type = 1),0.05, type = 1,na.rm=TRUE)} \\
+& = & \Sexpr{1000*quantile(quantile(Stock2_ret,0.05, type = 1),0.05, type = 1,na.rm=TRUE)}
+\end{eqnarray*}
+
+
+\end{frame}
+
+\begin{frame}
+
+The previous example demonstrates one rule:
+
+\bigskip
+
+The more volatile (spread out) the rate of return, the larger is the VaR (the potential loss on your investment)!
+
+\end{frame}
+
+\begin{frame}
+Based on these percentiles, we can also define a measure of spread, called \textbf{Interquantile Range (IQR)}
+
+\bigskip
+
+\begin{center}
+$75^{th}$ percentile - $25^{th}$ percentile
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]
+Another technique: \textbf{Box Plot}
+<<echo=FALSE,size='tiny'>>=
+box.data <-rnorm(100)
+box.data
+@
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]
+<<size='small'>>=
+summary(box.data)
+@
+
+
+<<message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='small'>>=
+boxplot(box.data)
+@
+
+\end{frame}
+
+\begin{frame}
+The boxplot compactly displays the distribution of a continuous variable. It visualises five summary statistics 
+
+\begin{enumerate} 
+  \item the median
+  \item two hinges
+  \item two whiskers
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\begin{columns}[T] % align columns
+\begin{column}{.48\textwidth}
+\color{red}\rule{\linewidth}{4pt}
+
+Graph
+
+<<message=FALSE, fig.height=8, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='small'>>=
+boxplot(box.data)
+@
+
+\end{column}%
+\hfill%
+\begin{column}{.48\textwidth}
+\color{blue}\rule{\linewidth}{4pt}
+
+Interpretation
+
+{\small
+\begin{enumerate}
+\item<1-> The top and bottom lines of the rectangle are the 3rd and 1st quartiles (Q3 and Q1), respectively.  The length of the rectangle is the IQR.
+\item<2-> The line in the middle of the rectangle is the median.
+\item<3-> The top whisker denotes the maximum value or the 3rd quartile plus 1.5 times the interquartile range (Q3 + 1.5*IQR), whichever is smaller.
+\item<4-> The bottom whisker denotes either the minimum value or the 1st quartile minus 1.5 times the interquartile range (Q1 - 1.5*IQR), whichever is larger.
+
+\end{enumerate}
+}
+\end{column}%
+\end{columns}
+\end{frame}
+
+
+
+\end{document}

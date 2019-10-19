@@ -1,24 +1,21 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1570675498834.000,
+    "created" : 1571446001275.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "0",
-    "id" : "239E55CD",
+    "id" : "B92CEEC4",
     "lastKnownWriteTime" : 1570675603,
-    "last_content_update" : 1570675603149,
+    "last_content_update" : 1570675603,
     "path" : "~/Dropbox/02 teaching/EconometricsI/09github/2019f/summary/intro_prob_theory05_MC.md",
     "project_path" : "summary/intro_prob_theory05_MC.md",
     "properties" : {
         "cursorPosition" : "23,0",
-        "scrollLine" : "0"
+        "scrollLine" : "2"
     },
-    "read_only" : false,
-    "read_only_alternatives" : [
-    ],
-    "relative_order" : 1,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "markdown"
