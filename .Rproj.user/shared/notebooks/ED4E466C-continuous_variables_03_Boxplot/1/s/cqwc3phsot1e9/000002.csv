@@ -1,7 +1,0 @@
-"0","```r
-data <- data.frame(x = 1, y = box.data)
-
-ggplot(data, aes(x = x, y = y)) +
-  geom_boxplot() +
-  xlim(c(0,2))
-```"

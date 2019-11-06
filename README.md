@@ -38,11 +38,11 @@
 |         |          |                                                                                                                                                |                    | 
 | 18      | 10/16/19 | **Midterm**                                                                                                                                    |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 19      | 10/21/19 | **Topic 7.** Conditional Distribution    [details](summary/intro_prob_theory07_cond_dist.md)                                                   |                    | 
+| 19      | 10/21/19 | **Topic 7.** Conditional Distribution    [details](summary/intro_prob_theory07_cond_dist.md)                                                   |    [PS 6](ps/ps6.pdf); [Practice Questions](ps/ps6_practice_question.pdf)                | 
 |         |          |                                                                                                                                                |                    | 
 | 20      | 10/23/19 | **Topic 8.** Conditional Expectation    [details](summary/intro_prob_theory08_cond_expectation.md)                                             |                    | 
 |         |          |                                                                                                                                                |                    | 
-| 21      | 10/28/19 | **Topic 8.** Conditional Expectation    [details](summary/intro_prob_theory08_cond_expectation.md)                                             |                    | 
+| 21      | 10/28/19 | **Topic 8.** Conditional Expectation    [details](summary/intro_prob_theory08_cond_expectation.md)                                             |    [PS 6](ps/ps6.pdf); [Practice Questions](ps/ps6_practice_question.pdf)                | 
 |         |          |                                                                                                                                                |                    | 
 | 22      | 10/30/19 | **Topic 9 and 10.** Linear Regression (I): Basics and Derivations  [details](summary/linear_regression01_basics.md)                            |                    | 
 |         |          |                                                                                                                                                |                    | 
