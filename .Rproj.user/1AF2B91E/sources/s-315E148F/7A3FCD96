@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571952498869.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1633577416",
+    "id" : "7A3FCD96",
+    "lastKnownWriteTime" : 1571953440,
+    "last_content_update" : 1571953440852,
+    "path" : "~/Dropbox/02 teaching/stat/04QQ/2019/econ5023_QQ8.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "72,38",
+        "scrollLine" : "42"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

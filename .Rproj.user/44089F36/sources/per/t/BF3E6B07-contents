@@ -1,0 +1,42 @@
+# This program illustrates a naive kernel density estimation with rectangular kernel
+# and a pre-specified bandwidth
+
+# Generate Some artificial Data
+set.seed(123456)
+X <- rnorm(10)
+
+# Specify the x value that we would like to calculate 
+# the density for
+x <- 1
+
+# specify the bandwidht
+h <- 0.5
+
+# Calculate the distance between every data point and x
+# and normalize the distance
+(X - x)/h
+
+# Assign one to the data points falling in the interval
+k <- ifelse(abs((X-x)/h)<=1, 1, 0)
+k
+
+# Use the formulae to obtain kernel density estimate
+
+N <- nrow(X)
+1/(N*h)*sum(1/2*k)
+
+
+
+# This is optional. We will talk more about how to write a function later
+# We can also write a function so that we can calculate this for many different values
+
+kpdf <- function(x, data, h){
+  
+  k <- ifelse(abs((data-x)/h)<=1, 1, 0)
+  
+  return(1/(N*h)*sum(1/2*k))
+  
+}
+
+
+sapply(seq(-1,1,0.01), kpdf, data=X, h = h)

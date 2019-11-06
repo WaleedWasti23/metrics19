@@ -1,0 +1,48 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Conditional Expectation Function {#CEF}
+
+```{theorem, cef1, name="Simple Law of Iterated Expectation"}
+$$
+  \mathbb{E}[\mathbb{E}[Y \mid X]] = \mathbb{E}[Y]
+$$
+```
+
+```{proof, cef1proof}
+\begin{equation}
+\begin{split}
+\mathbb{E}[Y] & = \int y f_{Y}(y) dy \\
+              & = \int y \int f(x,y) dx dy \\
+              & = \int y \int f_{Y\mid X}(y\mid x) f(x) dx dy \\
+              & = \int \{\int y f_{Y\mid X}(y \mid x)dy \} f(x)dx \\
+              & = \int \mathbb{E}[Y\mid X] f(x)dx \\
+              & = \mathbb{E}[\mathbb{E}[Y\mid X]]
+\end{split}
+\end{equation}
+```
+
+Theorem \@ref(thm:cef1) can be generalized to take into extra conditioning. 
+
+```{theorem, cef2, name="General Law of Iterated Expectation"}
+$$\mathbb{E}[\mathbb{E}[Y \mid X, Z] \mid Z] = \mathbb{E}[Y \mid Z]$$
+```
+
+```{proof, cef2proof}
+Let's fix $Z=z$ first.
+\begin{equation}
+\begin{split}
+\mathbb{E}[Y \mid Z=z] & = \int y f_{Y\mid Z}(y\mid z) dy \\
+                       & = \int y \frac{f(y,z)}{f(z)} dy \\
+                       & = \int y \frac{\int f(y,z,x)dx}{f(z)}dy \\
+                       & = \int y \frac{\int f(y \mid x,z)f(x,z)dx}{f(z)}dy \\
+                       & = \int \{\int y f(y \mid x,z) dy\} \frac{f(x,z)}{f(z)} dx \\
+                       & = \int \mathbb{E}[Y \mid X, Z=z] f_{X \mid Z}(x \mid z) dx \\
+                       & = \mathbb{E}[\mathbb{E}[Y \mid X, Z=z] \mid Z=z]
+\end{split}
+\end{equation}
+```
+
+We can see [here](https://stats.stackexchange.com/questions/95947/a-generalization-of-the-law-of-iterated-expectations) for a more intuitive explanation of the theorem, as well as proofs for the cases of discrete variables.

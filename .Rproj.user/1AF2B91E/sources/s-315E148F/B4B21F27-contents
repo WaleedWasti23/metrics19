@@ -1,0 +1,85 @@
+---
+title: "Quiz 7"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+## Kernel Density Estimation and Numerical Differentiation
+
+$$
+\widehat{f}(x)=\frac{1}{N h} \sum k\left(\frac{X_{i}-x_{i}}{h}\right)
+$$
+
+Suppose that we have the following data
+
+```{r}
+set.seed(123456)
+X <- runif(1000)
+```
+
+Can you calculate the density for the value of $2$ when the bandwidth is $0.5$ and the kernel is the standard normal kernel given by? 
+
+$$
+k(v) = \frac{1}{\sqrt{2\pi}} \exp\{-\frac{1}{2}v^2\}
+$$
+
+1. Let's calculate $v_i$ 
+
+$$
+\frac{X_i - x}{h}
+$$
+
+```{r}
+v <- 
+```
+
+
+2. Calculate $k(v)$ for each $v_i$
+
+```{r}
+k <- 
+```
+
+
+3. Calculate the sum of $k(v_i)$
+
+```{r}
+sum <- 
+```
+
+
+4. Calculate the number of observations
+
+```{r}
+N <- 
+N
+```
+
+
+5. Calculate the density using the formulae 
+
+```{r}
+f_x <- 
+f_x
+```
+
+
+## Quantile
+
+1. True or False. The way to calculate percentiles in Question 3 is nonparametric.
+
+**Answer:**
+
+2. Use the command below to calculate the median and the 80th percentile of this distribution, as defined in class. 
+
+```{r}
+set.seed(123456)
+x<- rnom(1000)
+```
+
+

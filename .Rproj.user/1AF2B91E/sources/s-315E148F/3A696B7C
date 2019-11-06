@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571951479567.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3A696B7C",
+    "lastKnownWriteTime" : 1541988321,
+    "last_content_update" : 1541988321,
+    "path" : "~/Dropbox/02 teaching/stat/03lectures/03-Univariate-Statistics/01_slides/econ5023_univariate_statistics_part4.Rnw",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "522,14",
+        "scrollLine" : "487"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sweave"
+}

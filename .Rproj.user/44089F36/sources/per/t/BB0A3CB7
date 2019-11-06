@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571599832703.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4128127567",
+    "id" : "BB0A3CB7",
+    "lastKnownWriteTime" : 1571600955,
+    "last_content_update" : 1571600955579,
+    "path" : "~/Dropbox/02 teaching/stat/03lectures/03-Univariate-Statistics/01_slides/examples/continuous_variables_01_kde.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "5,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,5 @@
+"0","```r
+set.seed(123456)
+box.data <-rnorm(100)
+box.data
+```"

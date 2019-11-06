@@ -1,0 +1,762 @@
+\documentclass{beamer}
+%\documentclass[handout]{beamer}
+
+\usepackage{animate}
+
+\begin{document}
+
+\title{Econ 5023: Statistics for Decision Making}
+\subtitle{Univariate Statistics (IV): Continuous Variables and Mean}
+\author{Le Wang}
+
+\maketitle
+
+
+\begin{frame}
+Itinerary:
+
+\begin{enumerate}
+\item Historical Development of Mean
+\item Expected Value and Mean
+\item Some properties of expectation operator
+\item Sample Averages
+\item Examples in Decision Anlysis
+\item Further examples: Bad ones and Good ones
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\bigskip
+
+\textbf{Our Question continued:} 
+
+\vspace{.25in}
+How should we obtain the best forecast for a continuous variabe?
+\end{frame}
+
+\begin{frame}
+We know that the complete distribution approach does not work. Conceptually, we still do not know which value is more likely.. since the probability of each possible value occuring is zero!
+
+\bigskip
+
+However, we do learn that we can use PMF and CDF to examine the probability of a range of values.
+
+\bigskip
+
+$\implies$ \textbf{Aggregation}: If general tendencies were to be revealed, the observations must be taken as a set; they must be combined!
+
+\end{frame}
+
+\begin{frame}
+This thinking leads to the second approach:
+
+\begin{enumerate}
+  \item<2->Instead of examining the distribution itself, we use \emph{parameters} to represent the general tendencies. 
+  \item<3-> But which parameter? Or, which part of the distribution?
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}
+
+\textbf{Mean}
+
+\bigskip
+
+\begin{center}
+  {\Huge Why????!!!}
+\end{center}
+
+
+Use of \textbf{Mean} is a rather radical idea.
+
+\end{frame}
+
+\begin{frame}
+
+\begin{enumerate}
+  \item<1-> The earliest clearly documented use of an arithmetic mean was in 1635 (Gellibrand, 1635,on compass needle).
+  \item<2-> The mathematics of a mean was certainly known in antiquity. The Pythagoreans knew already in 280 BCE of three kinds of means: the arithmetic and the geometric means.
+  \item<3-> Why was the mean not used to combine observations in some earlier era-in astronomy, surveying, or economics? 
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3in, height=3in]{figures/meane01.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3in, height=3in]{figures/meane02.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{How is it revolutionary?}
+
+\bigskip
+
+\only<2->{
+  By stipulating that, given a number of observations, you can actually gain information by throwing information away! In taking a simple arithmetic mean, we discard the individuality of the measures, subsuming them to one summary.
+}
+\end{frame}
+
+\begin{frame}
+
+Even after taking means had become commonplace, the thought that discarding information can increase information has not always been an easy sell.
+
+\bigskip
+
+In 1860s, William Stanley Jevons proposed measuring changes in price level by an index number that was essentially an average of the percentage changes in different commodities, critics considered it absurd to average data on pig iron and pepper!
+\end{frame}
+
+\begin{frame}
+
+Those investigators with detailed historical knowledge were tempted to think they could ``explain'' every movement, every fluctuation, with some story of why that particular event had gone the way it did.
+
+\end{frame}
+
+\begin{frame}
+Jevon's condemnation of this critique
+
+\begin{quote}
+Were a complete explanation of each fluctuation thus necessary, not only would all inquiry into this subject be hopeless, but the whole of the statistical and social sciences, so far as they depend upon numerical facts, would have to be abandoned.
+
+
+\end{quote}
+
+\end{frame}
+
+\begin{frame}
+From Jorge Luis Borges' 1942 ``Funes the Memorious'' (a fantasy short story)
+
+\bigskip
+he described a man, Ireneo Funes, who found after an accident that he could remember absolutely everything. He could reconstruct every day in the smallest detail, and he could even later reconstruct the reconstruction, but he was incapable of understanding. 
+
+\bigskip
+
+Borges wrote, ``To think is to forget details, generalize, make abstractions. In the teeming world of Funes there were only details.''
+
+\end{frame}
+
+\begin{frame}
+More formal definition of \textbf{\underline{Population} Mean} (or \textbf{First Moment} of the Distribution)
+
+\bigskip
+\begin{enumerate}
+  \item[] [Continuous Variable:] $\mathbb{E}[X] = \int x f(x)dx$
+  \item[] [Discrete Variable:] $\mathbb{E}[X] = \sum x f(x)$
+\end{enumerate}
+
+\noindent where $f(x)$ is the \textbf{probability mass function} in the case of discrete variables, and \textbf{probability density function} in the case of continuous variables. 
+
+\end{frame}
+
+
+\begin{frame}{A Numerical Example}
+
+Some of you who are not familiar with the expectation operator. Note that it is just defined that way!
+
+\vspace{.15in}
+Consider a discrete variable that can take on only two values, either $0$ or $1$. And the population distribution function is characterized as follows
+\vspace{.15in}
+$f(0) = \Pr[X = 0] = .25$ and $f(1) = \Pr[X = 1] = .75$. Then, the population mean is 
+\vspace{.15in}
+$$
+\mathbb{E}[X] = 0\times .25 + 1\times .75 = .75!
+$$
+
+\end{frame}
+
+
+\begin{frame}
+Note, however, that
+
+\begin{enumerate}
+  \item The expected value of an unknown quantity is not necessariliy itself a possible value of the unknown quantity (especially when an outcome is discrete)
+  \item \textbf{Mean does not always exist, especially when you have infinite number of values!} (St. Petersburg Paradox)
+  \item It should be treated as a technical term, instead of common English usage of the word.
+  \item But it could be reasonably described as \textbf{``near the center''} of the possible values of the unknown quantity.
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}
+More on \textbf{Expectation Operator:}
+
+  \begin{enumerate}
+    \item Linear Operator (or Properties)
+    \item Its relations to CDF
+    \item Its relations to the Entire distribution (Moments)
+  \end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+More on \textbf{Expectation Operator:} (Part I)
+
+\bigskip
+$\mathbb{E}[Y] = \mu = \int^{\infty}_{-\infty} y f(y) dy$
+
+\bigskip
+Expectation is a \textbf{linear} operator satisfying the following properties.
+    \begin{enumerate}
+        \item $\mathbb{E}[c] = c$, where $c$ is a constant.
+        \item $\mathbb{E}[aY+b] = a\mathbb{E}[Y] + b$, where $a$ and $b$ are constant.
+        \item $\mathbb{E}[c_1Y_1+c_2Y_2 + \dots + c_kY_k]=\sum^k_1 c_k\mathbb{E}[Y_k]$
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+$\mathbb{E}[c] = c$, where $c$ is a constant.
+
+\bigskip
+\textbf{Examples:}
+
+Suppose that you have a risk-free asset with a return of $6$\%. Then your expected return is?
+\end{frame}
+
+\begin{frame}
+
+$\mathbb{E}[aY+b] = a\mathbb{E}[Y] + b$, where $a$ and $b$ are constant.
+
+\bigskip
+
+$\mathbb{E}[c_1Y_1+c_2Y_2 + \dots + c_kY_k]=\sum^k_1 c_k\mathbb{E}[Y_k]$
+
+\bigskip
+
+
+\textbf{Examples:}
+
+Suppose that the total cost of 1 million is fixed (since you've already signed the contract for renting and employees etc.), and that you know that the expected total revenue (which is determined by unknown demand) is 2 million dollars. What is your profit?
+
+\bigskip
+
+\only<2->{
+We know that profit is defined as follows
+
+
+\begin{eqnarray*}
+\text{Profit} & = & \text{Total Revenue} - \text{Total Cost} \\
+\mathbb{E}[\text{Profit}] & = & \mathbb{E}[\text{Total Revenue}] - \mathbb{E}[\text{Total Cost}] \\
+& = & 2 - 1 = 1
+\end{eqnarray*}
+}
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+\textbf{Application in Contemporary Decision Analysis}
+\end{center}
+
+
+\end{frame}
+
+
+\begin{frame}
+
+It is generally supposed that when the relevant probabilities and utilities are known, the theory of rational decision is simple. (JOHN L. POLLOCK, 1983) 
+
+\bigskip
+
+\emph{Criterion of Expected Value Maximization}
+
+\bigskip
+
+\begin{quote}
+A person should (rationally) perform an act iff the expectation value of
+his doing so is greater than the expectation value of his performing any
+alternative act. 
+\end{quote}
+
+\end{frame}
+
+
+\begin{frame}
+
+\textbf{Theory of the Firm}
+
+\bigskip
+
+\textbf{Objective 1}: Maximize stock prices. Maximize the present value (PV) of the expected future profits - maximize PV over time.
+
+\end{frame}
+
+\begin{frame}
+\begin{enumerate}
+  \item \emph{Criterion of Expected Value Maximiation}
+  \item \emph{Utility Analysis taking into account Risk Aversion}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+Consider a simplistic example of investment opportunity,
+
+\bigskip
+\begin{enumerate}
+  \item 90\% of the chance you will lose all of your money
+  \item 10\% of the chance you will gain 11 million dollars
+\end{enumerate}
+
+The fixed cost for this investment is 1 million dollars. Should you invest?
+\end{frame}
+
+\begin{frame}
+By \emph{Criterion of Expected Value Maximiation}:
+
+\bigskip
+
+$$
+\mathbb{E}[\text{Total Revenue}] = .9\times 0  + .1\times 11 = 1.1
+$$
+
+$\implies$
+
+$$
+\mathbb{E}[\text{Profit}] = 1.1-1 = .1
+$$
+
+\textbf{Your alternative:} No investment. Total Profit is zero, of course. 
+
+\end{frame}
+
+
+
+
+\begin{frame}
+This criterion has many good properties.
+
+\begin{enumerate}
+  \item It takes account of all possible outcomes in a sensible way
+  \item It is more sensitive to outcomes that are more likely.
+  \item This argument is particularly compelling in games that can be repeated. In the long run (when such situation arises many times), a strategy  of choosing the alternative that yields the higest expected value will almost surely maximize our long-term total payoff. 
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+This approach assumes \emph{risk netural} agents. In reality, people may be averse to risk (or maybe love risk). One approach to take into account risk is \emph{utility analysis}.
+
+\bigskip
+
+In 1947, Von Neumann and Morgensten gave an ingenious argument to show that any consistent rational decision maker should choose among risky gambles according to utility theory.
+
+
+\end{frame}
+
+
+\begin{frame}
+
+$$
+\mathbb{E}[U(\cdot)] = .9\times U(-1) + .1 \times U(10)
+$$
+
+\bigskip
+
+Note that 
+
+$$
+\mathbb{E}[U(Y)] \neq U(\mathbb{E}[Y])
+$$
+
+\end{frame}
+
+\begin{frame}
+
+One example of risk-aversion utility functions is the following one with \textbf{constant risk tolerance}. This assumption is very convenient in practical decision analysis. 
+
+$$
+U(x) = - \exp(-x/r) 
+$$
+
+where $r$ is called \emph{risk-tolerance constant}. 
+\end{frame}
+
+\begin{frame}[fragile]
+
+Suppose we know that $r=30$ (which can be obtained by playing certain experiments)
+
+<<echo=FALSE,message=FALSE, fig.height=4, fig.width=6, out.width='.8\\linewidth', dev='pdf', fig.align='center', size='tiny'>>=
+curve(-exp(-x/30),-100,100)
+@
+
+\end{frame}
+
+\begin{frame}
+
+\begin{center}
+Optional Background Knowledge: Certainty Equivalent
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+
+You can think of \textbf{certainty equilvalent} as what it takes for you to give up you gamble (or uncertainty).
+
+\bigskip
+
+Imagine that you had a lottery ticket that would pay you either \$20,000 or \$0, each with probability 1/2. 
+
+\bigskip
+If you are risk neutral, then you should be unwilling to sell this ticket for any amount of money less than its expected value (\$10,000).
+
+\bigskip
+If you are risk averse, then you may sell for less (\textbf{money-for-certain}), say, \$7,000.
+
+
+\end{frame}
+
+\begin{frame}
+
+Since you are giving up some money to obtain certainty, the difference between the expected value and the certainty equilvalent is indeed \textbf{Risk Premium}:
+
+$$
+10000-7000=3000
+$$
+
+\end{frame}
+
+\begin{frame}
+In the utility analysis context, you are looking for the certainty equilvalent that makes you have the same \textbf{utility}:
+
+$$
+U(CE) = \mathbb{E}[U(x)]
+$$
+
+$\implies$
+
+$$
+CE = U^{-1}(\mathbb{E}[U(x)])
+$$
+\end{frame}
+
+\begin{frame}
+\textbf{Constant Risk Tolerance}: If you change a gamble by adding a fixed additinal amount of money to the decision maker's payoff in all possible outcomes of the game, then the \textbf{certainty equivalent} of the gamble should increase by this same amount.
+
+\end{frame}
+
+
+\begin{frame}
+A weird way to obtain expected value
+
+\bigskip
+
+\textbf{Sample Estimator}: Sample Averages
+\end{frame}
+
+\begin{frame}{Sample Estimator of Population Mean}
+
+\textbf{\underline{Sample} Average} is an estimator of the population mean
+
+$$
+\frac{\sum_{i=1}^N x_i}{N}
+$$
+
+If you are not familiar with summation signs, you can just expand it to the form that most of you are familiar with
+
+$$
+\frac{\sum_{i=1}^N x_i}{N} = \frac{x_1 + x_2 + x_3 + \dots _ + x_N}{N}
+$$
+
+\bigskip
+
+\textbf{Weighted Average}:
+
+$$
+\frac{\sum_{i=1}^N x_i}{N} = \frac{1}{N}x_1 + \frac{1}{N}x_2 + \frac{1}{N}x_3 + \dots _ + \frac{1}{N}x_N
+$$
+
+\end{frame}
+
+
+\begin{frame}
+Version straightforward from the definition, but more difficult to see.
+
+$$
+\mathbb{E}[X] = \sum x^j f(x^j)
+$$
+
+$$
+\widehat{\mathbb{E}[X]} = \sum x^j \widehat{f(x^j)}
+$$
+
+\end{frame}
+
+\begin{frame}
+
+
+\begin{eqnarray*}
+\widehat{\mathbb{E}[X]} & =  & \sum x^j \widehat{f(x^j)} \\
+              & =  & x^1 \cdot \frac{\sum \mathbb{I}[x_i = x^1 ]}{N} + \\
+              &    & x^2 \cdot \frac{\sum \mathbb{I}[x_i = x^2 ]}{N} + \\
+              &    & \dots + \\
+              &    & x^k \cdot \frac{\sum \mathbb{I}[x_i = x^k ]}{N}
+\end{eqnarray*}
+
+
+
+\end{frame}
+
+\begin{frame}
+Better to consider a numerical example:
+
+$$
+(1, 2, 1, 1,2)
+$$
+
+\pause 
+$x^1 = 1, x^2 = 2$
+
+\end{frame}
+
+\begin{frame}
+\begin{eqnarray*}
+\widehat{\mathbb{E}[X]} & =  & \sum x^j \widehat{f(x^j)} \\
+              & =  & x^1 \cdot \frac{\sum \mathbb{I}[x_i = x^1 ]}{N} + \\
+              &    & x^2 \cdot \frac{\sum \mathbb{I}[x_i = x^2 ]}{N} \\
+              \pause
+              & = & 1 \cdot \frac{\mathbb{I}[1=1]+\mathbb{I}[2=1]+\mathbb{I}[1=1]+\mathbb{I}[1=1]+\mathbb{I}[2=1]}{5} + \\
+              &  &  2 \cdot \frac{\mathbb{I}[1=2]+\mathbb{I}[2=2]+\mathbb{I}[1=2]+\mathbb{I}[1=2]+\mathbb{I}[2=2]}{5} \\
+              \pause
+              & = & 1 \cdot \frac{1+0+1+1+0}{5} + \\
+              &   & 2 \cdot \frac{0+1+0+0+1}{5} \\
+              \pause
+              & = & 1 \cdot \frac{1}{5} + 1\cdot \frac{0}{5}+ 1\cdot \frac{1}{5}+ 1\cdot \frac{0}{5} + 1\cdot \frac{0}{5}\\
+              &   & 2 \cdot \frac{0}{5} + 2 \cdot \frac{1}{5} + 2 \cdot \frac{0}{5} + 2 \cdot \frac{0}{5} +2 \cdot \frac{1}{5}               
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}
+\begin{eqnarray*}
+\widehat{\mathbb{E}[X]}   & = & 1 \cdot \frac{1}{5} + 1\cdot \frac{0}{5}+ 1\cdot \frac{1}{5}+ 1\cdot \frac{0}{5} + 1\cdot \frac{0}{5}\\
+              &   & 2 \cdot \frac{0}{5} + 2 \cdot \frac{1}{5} + 2 \cdot \frac{0}{5} + 2 \cdot \frac{0}{5} +2 \cdot \frac{1}{5}     \\  
+& = & 1 \cdot \frac{1}{5} +  1\cdot \frac{1}{5}  +  1\cdot \frac{1}{5} + 2 \cdot \frac{1}{5}  +2 \cdot \frac{1}{5} \\
+& = & 1 \cdot \frac{1}{5} + 2 \cdot \frac{1}{5} +  1\cdot \frac{1}{5}  +  1\cdot \frac{1}{5}   + 2 \cdot \frac{1}{5}
+\end{eqnarray*}
+
+Data:
+
+$$
+(1, 2, 1, 1,2)
+$$
+
+\end{frame}
+
+
+\begin{frame}
+More on \textbf{Expectation Operator:}
+
+  \begin{enumerate}
+    \item Linear Operator (or Properties) satisfied by sample averages as well. 
+  \end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}
+More on \textbf{Expectation Operator:} (Part I)
+
+\bigskip
+$\mathbb{E}[Y] = \mu = \int^{\infty}_{-\infty} y f(y) dy$
+
+\bigskip
+Expectation is a \textbf{linear} operator satisfying the following properties.
+    \begin{enumerate}
+        \item $\mathbb{E}[c] = c$, where $c$ is a constant.
+        \item $\mathbb{E}[aY+b] = a\mathbb{E}[Y] + b$, where $a$ and $b$ are constant.
+        \item $\mathbb{E}[c_1Y_1+c_2Y_2 + \dots + c_kY_k]=\sum^k_1 c_k\mathbb{E}[Y_k]$
+    \end{enumerate}
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+
+$\mathbb{E}[c] = c$, where $c$ is a constant.
+<<>>=
+x <- c(1,1,1,1)
+x
+mean(x)
+@
+\end{frame}
+
+\begin{frame}[fragile]
+
+$\mathbb{E}[aY+b] = a\mathbb{E}[Y] + b$, where $a$ and $b$ are constant.
+<<size='footnotesize'>>=
+y <- c(1,2,3,4)
+y
+mean(y)
+
+a <- 2
+b <- 1
+z <- a*y + b
+
+mean(z)
+a*mean(y)+b
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+$\mathbb{E}[c_1Y_1+c_2Y_2 + \dots + c_kY_k]=\sum^k_1 c_k\mathbb{E}[Y_k]$
+
+<<size='footnotesize'>>=
+y1 <- c(1,2,3,4)
+y2 <- c(6,7,8,9)
+
+y1
+y2
+
+c1 <- 2
+c2 <- 1
+z <- c1*y1 + c2*y2
+
+mean(z)
+c1*mean(y1)+c2*mean(y2)
+@
+
+
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+Application in Social Science: Limitations of Mean
+\end{center}
+
+\end{frame}
+
+\begin{frame}{One Limitation of Mean}
+
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3in, height=3in]{figures/sex_partners.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+Puzzle: Surprisingly, it seems the older women have had fewer partners. Intriguing when you think they've had more time to add to their collection. It shows that behaviour has changed between women born in the 1930s and those born in the 1970s.
+
+\bigskip
+These averages mask the great variation in people's experiences, with the most common response being precisely one, in stark contrast to the few who reported more than 500 partners.
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+(Mis-)Application in Social Science
+\end{center}
+
+\end{frame}
+
+\begin{frame}
+
+In the 1870s, Francis Galton took the idea of a mean a step further, to nonquantitative data. He put considerable time and energy into the construction of what he called ``generic images'' based upon composite portraiture, where, by superimposing pictures of several members of a group, he essentially produced a picture of the average man or woman in that group
+
+
+
+\end{frame}
+
+\begin{frame}
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3in, height=3in]{figures/meane03.png}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+An American scientist, Raphael Pumpelly, took photographs of those attending a meeting of the National Academy of Sciences in April 1884; the following year he published the results. As one example, the images of 12 mathematicians (at the time, the term included astronomers and physicists) are superimposed as a composite picture of an average mathematician.
+
+
+\end{frame}
+\begin{frame}
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3in, height=3in]{figures/meane04.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+A similiar but more successful example:
+
+\bigskip
+
+A team of four computer scientists at Brown and Berkeley. They looked at many scanned historical high school yearbooks, thanks for the digital-era development. 
+
+\bigskip
+
+Figure out the average location and configuration of people's noses, eyes, lips, and hair. 
+
+
+\end{frame}
+
+
+\begin{frame}
+\begin{figure}[htp!]
+     \centering
+     \includegraphics[width=3.5in, height=3in]{figures/mean_pic01.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+A trend: people smile a lot more! 
+
+\bigskip
+
+Did Americans get happier? 
+
+\end{frame}
+
+\begin{frame}
+
+Nope! 
+
+\bigskip
+
+\textbf{early stages:} people in photos adopted the same look as those in the paintings (nobody could hold a smile for many hours!).. because they had nothing else to compare to. 
+
+\bigskip 
+
+Kodak was frustrated by the limited number of pictures people were taking and devised a strategy to get them to take more...
+
+\bigskip
+
+To get people in the habit of taking a picture whenever they wanted to show others what a good time they were having....
+
+
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1571859471260.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2C86B181",
+    "lastKnownWriteTime" : 1541699264,
+    "last_content_update" : 1541699264,
+    "path" : "~/Dropbox/02 teaching/stat/05Homework/ps5.Rmd.Rnw",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "122,3",
+        "scrollLine" : "87"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "sweave"
+}

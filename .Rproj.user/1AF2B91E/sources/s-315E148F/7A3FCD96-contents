@@ -1,0 +1,95 @@
+---
+title: "Quiz 8"
+author: "Your Name Here"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+Let's try to program skewness ourselves. The following formula is what we are trying to program
+
+$$
+  \text{Skewness } = \frac{\mathbb{E}[(X_i-\mu)^3]}{\sigma^3}
+$$
+
+
+where $\mu$ is the mean or first moment of the variable, $X$, $\sigma$ is the standard deviation; and the numerator is the third (central) moment. This quiz will guide you through the calculation of this quantity. Prior to continuing, let's obtain the same data set in R by typing the following code
+
+
+```{r}
+set.seed(123456)
+x <- rnorm(1000)
+```
+
+1. To calculate the numerator, we need to know the mean, $\mu$, first. How to estimate it without using `mean()` function in R? We can use the following formula as we did in class before
+  
+  $$
+  \widehat{\mu} = \frac{\sum^{N}_{i =1}X_i}{N}
+  $$
+  
+Write down your R code below that calculates this quantity and save the results in something called `tt`. Also present the actual results. **Hint: Two commands would be useful.** `sum()` and `length()`. You can verify your code in R first. 
+
+```{r}
+mu <- 
+```
+
+2. Now, let's calculate the numerator by using the corresponding \textbf{sample} analog, which is nothing but the mean of the (new) variable, $(X_i-\mu)^3$. So, let's break it into two pieces, if desired.
+
+    1. Construct a new variable, called `third.moment.var`.
+    
+```{r}
+third.moment.var <-
+```
+    
+    2. Calculate the mean of this new variable, which is the third moment. 
+    
+    
+```{r}
+numerator <- <- 
+```
+    
+    
+3. Let's then calculate the denominator. We can again divide the tasks.     
+    
+    1. Note that the standard deviation, $\sigma$, is nothing but the squared root of the variance (or the second moment), so let's calculate the variance here (which would be similar to Question 2.). 
+    $$
+      \frac{\sum^N_{i=1}(X_i-\mu)^2}{N}
+    $$    
+    
+    
+```{r}
+variance <- 
+```
+
+
+    2. Take the squared root of the variance. 
+    
+```{r}
+sd <- 
+```
+
+    3. We now have all the ingredients to calculate the denominator.
+    
+```{r}
+denominator <- 
+```
+
+
+4. Finally, we can calculate the skewness by typing the following code
+    
+```{r}
+numerator/denominator
+```
+
+5. We can compare our results to the one calculated using the `skewness()` in the `moments` package. 
+
+```{r}
+library(moments)
+skewness(x)
+```
+
+    
+  
+    
